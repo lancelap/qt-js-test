@@ -4,7 +4,7 @@ export default function loadScriptMap(url) {
     const body = document.getElementsByTagName('body')[0];
     
     if(url.match(/onload=initYandexMap/)) {
-      window.initYandexMap = () => resolve();
+      window.initYandexMap = (ymaps) => resolve(ymaps);
     } else {
       reject(new Error("require onload func"))
     }
