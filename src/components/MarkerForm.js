@@ -14,6 +14,7 @@ class MarkerForm extends Component {
         <input style={{width: '196px'}}
           type="text"
           value={this.state.text}
+          disabled={!this.props.loaded}
           placeholder="Новая точка маршрута" 
           onChange={this.onChangeMarkerTitle} />
       </form>
