@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Polyline extends Component {
   constructor() {
@@ -21,6 +22,12 @@ class Polyline extends Component {
   render() {
     return null;
   }
+}
+
+Polyline.propTypes = {
+  map: PropTypes.object, 
+  ymaps: PropTypes.object, 
+  markersCoord: PropTypes.array
 }
 
 export default Polyline;

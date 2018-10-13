@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Marker extends Component {
   componentDidMount() {
@@ -25,6 +26,13 @@ class Marker extends Component {
     e.preventDefault();
     deleteMarker(id);
   }
+}
+
+Marker.propTypes = {
+  id: PropTypes.number,
+  deleteMarker: PropTypes.func, 
+  addDragEndListener: PropTypes.func, 
+  removeDragEndListener: PropTypes.func, 
 }
 
 export default Marker;

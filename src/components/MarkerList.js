@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Marker from './Marker';
 import Polyline from './Polyline';
+import PropTypes from 'prop-types';
 
 class MarkerList extends Component {
   render() {  
@@ -34,6 +35,15 @@ class MarkerList extends Component {
       </div>
     )
   }
+}
+
+MarkerList.propTypes = {
+  map: PropTypes.object, 
+  ymaps: PropTypes.object, 
+  deleteMarker: PropTypes.func, 
+  markers: PropTypes.object, 
+  addDragEndListener: PropTypes.func, 
+  removeDragEndListener: PropTypes.func, 
 }
 
 export default MarkerList;

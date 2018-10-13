@@ -10,8 +10,8 @@ class Map extends Component {
     super();
 
     this.state = {
-      map: null,
-      ymaps: null,
+      map: {},
+      ymaps: {},
       loaded: false,
       mapId: 'YMapsID',
       markers: {},

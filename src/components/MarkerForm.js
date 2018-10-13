@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class MarkerForm extends Component {
   constructor() {
@@ -32,6 +33,11 @@ class MarkerForm extends Component {
     this.props.addMarker(Date.now(), this.state.text);
     this.setState({text: ''})
   }
+}
+
+MarkerForm.propTypes = {
+  loaded: PropTypes.bool, 
+  addMarker: PropTypes.func, 
 }
 
 export default MarkerForm;
