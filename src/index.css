@@ -34,11 +34,22 @@ code {
 
 
 .marker {
+  display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
   border: 1px solid #ffffff;
   background-color: #ffffff;
   list-style-type: none;
+}
+
+.marker__button {
+  width: 25px;
+  height: 25px;
+}
+
+.marker__text {
+  margin: 0;
+  margin-right: auto;
 }
 
 .marker-form__input {
