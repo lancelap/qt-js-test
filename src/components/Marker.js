@@ -33,6 +33,6 @@ Marker.propTypes = {
   deleteMarker: PropTypes.func, 
   addDragEndListener: PropTypes.func, 
   removeDragEndListener: PropTypes.func, 
-}
+};
 
 export default Marker;

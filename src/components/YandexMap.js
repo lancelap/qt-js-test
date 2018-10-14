@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class YandexMap extends Component {
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   render() {
@@ -11,7 +11,7 @@ class YandexMap extends Component {
         id={this.props.id} 
         style={{backgroundColor: 'lightgray', width: '450px', height: '350px'}}>
       </div>
-    )
+    );
   }
 }
 

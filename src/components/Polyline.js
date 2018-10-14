@@ -28,6 +28,6 @@ Polyline.propTypes = {
   map: PropTypes.object, 
   ymaps: PropTypes.object, 
   markersCoord: PropTypes.array
-}
+};
 
 export default Polyline;

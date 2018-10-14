@@ -19,7 +19,7 @@ class MarkerList extends Component {
           deleteMarker={deleteMarker}
           addDragEndListener={addDragEndListener} 
           removeDragEndListener={removeDragEndListener}/>
-      ) 
+      ); 
     }
 
     return (
@@ -33,7 +33,7 @@ class MarkerList extends Component {
           ymaps={ymaps} 
           markersCoord={markersCoord} />
       </div>
-    )
+    );
   }
 }
 
@@ -44,7 +44,7 @@ MarkerList.propTypes = {
   markers: PropTypes.object, 
   addDragEndListener: PropTypes.func, 
   removeDragEndListener: PropTypes.func, 
-}
+};
 
 export default MarkerList;
 

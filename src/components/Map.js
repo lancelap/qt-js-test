@@ -36,7 +36,7 @@ class Map extends Component {
       map: mapY,
       ymaps: ymaps,
       loaded: true
-    })
+    });
   }
 
   render() {
@@ -59,7 +59,7 @@ class Map extends Component {
         
         <YandexMap id={mapId} />
       </div>
-    )
+    );
   }
 
   addMarker = (id, text) => {
@@ -79,7 +79,7 @@ class Map extends Component {
     this.state.map.geoObjects.remove(newMarkers[id].placemark);
     delete newMarkers[id];
 
-    this.setState({markers: {...newMarkers}})
+    this.setState({markers: {...newMarkers}});
   }
 
   addDragEndListener = (id) => {
@@ -89,7 +89,7 @@ class Map extends Component {
     marker.events.add('dragend', () => {
       const newMarkers = {...this.state.markers};
       newMarkers[id].coordinates = marker.geometry.getCoordinates();
-      this.setState({markers: {...newMarkers}})
+      this.setState({markers: {...newMarkers}});
     });
   }
 

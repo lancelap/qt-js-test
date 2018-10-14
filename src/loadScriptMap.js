@@ -6,11 +6,11 @@ export default function loadScriptMap(url) {
     if(url.match(/onload=initYandexMap/)) {
       window.initYandexMap = (ymaps) => resolve(ymaps);
     } else {
-      reject(new Error("require onload func"))
+      reject(new Error('require onload func'));
     }
 
     script.src = url;
     script.onerror = reject;
     body.appendChild(script);
-  })
+  });
 }
