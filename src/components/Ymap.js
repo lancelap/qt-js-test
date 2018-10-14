@@ -5,7 +5,7 @@ import MarkerList from './MarkerList';
 import MarkerForm from './MarkerForm';
 
 
-class Map extends Component {
+class Ymap extends Component {
   constructor() {
     super();
 
@@ -110,4 +110,4 @@ class Map extends Component {
 
 }
 
-export default Map;
+export default Ymap;
