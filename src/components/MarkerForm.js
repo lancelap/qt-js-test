@@ -11,8 +11,8 @@ class MarkerForm extends Component {
 
   render() {
     return(
-      <form onSubmit={this.onSubmit}>
-        <input style={{width: '196px'}}
+      <form className='marker-form' onSubmit={this.onSubmit}>
+        <input className='marker-form__input'
           type="text"
           value={this.state.text}
           disabled={!this.props.loaded}

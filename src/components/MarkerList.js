@@ -23,16 +23,14 @@ class MarkerList extends Component {
     }
 
     return (
-      <div>
-        <ul>
-          {markersArr}
-        </ul>
+      <ul className='marker-list'>
+        {markersArr}
         <Polyline 
           markers={markers} 
           map={map} 
           ymaps={ymaps} 
           markersCoord={markersCoord} />
-      </div>
+      </ul>
     );
   }
 }

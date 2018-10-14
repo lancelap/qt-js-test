@@ -12,3 +12,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.marker-list {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+}
+
+.map {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 25px;
+  max-width: 600px;
+}
+
+.yandex-map {
+  padding-left: 10px;
+  width: 450px;
+  height: 450px;
+}
+
+
+.marker {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.marker-form__input {
+  width: 196px;
+}

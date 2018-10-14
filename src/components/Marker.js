@@ -16,7 +16,7 @@ class Marker extends Component {
     const {text, id, deleteMarker} = this.props;
 
     return (
-      <li>{text}
+      <li className='marker'>{text}
         <button onClick={this.clickHandeler(id, deleteMarker)}>X</button>
       </li>
     );

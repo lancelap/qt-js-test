@@ -42,20 +42,22 @@ class Map extends Component {
   render() {
     const {mapId, map, ymaps, loaded, markers} = this.state;
     return (
-      <div>
-        <MarkerForm addMarker={this.addMarker} loaded={loaded} />
+      <div className='map'>
+        <div>
+          <MarkerForm addMarker={this.addMarker} loaded={loaded} />
 
-        {loaded ? (
-          <MarkerList 
-            map={map} 
-            deleteMarker={this.deleteMarker} 
-            addDragEndListener={this.addDragEndListener}
-            removeDragEndListener={this.removeDragEndListener}
-            ymaps={ymaps} 
-            markers={markers} />
-        ) : (
-          null
-        )}
+          {loaded ? (
+            <MarkerList 
+              map={map} 
+              deleteMarker={this.deleteMarker} 
+              addDragEndListener={this.addDragEndListener}
+              removeDragEndListener={this.removeDragEndListener}
+              ymaps={ymaps} 
+              markers={markers} />
+          ) : (
+            null
+          )}
+        </div>
         
         <YandexMap id={mapId} />
       </div>

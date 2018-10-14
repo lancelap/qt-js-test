@@ -9,7 +9,8 @@ class YandexMap extends Component {
     return (
       <div 
         id={this.props.id} 
-        style={{backgroundColor: 'lightgray', width: '450px', height: '350px'}}>
+        className='yandex-map'
+        style={{width: '450px', height: '450px'}}>
       </div>
     );
   }
