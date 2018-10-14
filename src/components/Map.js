@@ -50,6 +50,7 @@ class Map extends Component {
             <MarkerList 
               map={map} 
               deleteMarker={this.deleteMarker} 
+              moveMarker={this.moveMarker}
               addDragEndListener={this.addDragEndListener}
               removeDragEndListener={this.removeDragEndListener}
               ymaps={ymaps} 
@@ -100,6 +101,11 @@ class Map extends Component {
     const marker = markers[id].placemark;
     
     marker.events.remove('dragend');
+  }
+
+  moveMarker = (dragIndex, hoverIndex) => {
+
+    console.log(dragIndex, hoverIndex);
   }
 
 }

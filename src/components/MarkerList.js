@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 
 class MarkerList extends Component {
   render() {  
-    const {map, ymaps, deleteMarker, markers, addDragEndListener, removeDragEndListener} = this.props;
+    const {map, ymaps, deleteMarker, markers, addDragEndListener, removeDragEndListener, moveMarker} = this.props;
     let markersCoord = [];
     let markersArr = [];
 
+    let i = 1;
     for (let marker in markers) {
       markersCoord.push(markers[marker].coordinates);
       markersArr.push(
@@ -17,9 +18,12 @@ class MarkerList extends Component {
           text={markers[marker].text}
           id={markers[marker].timestamp}
           deleteMarker={deleteMarker}
+          index={i}
+          moveMarker={moveMarker}
           addDragEndListener={addDragEndListener} 
           removeDragEndListener={removeDragEndListener}/>
       ); 
+      i++;
     }
 
     return (
