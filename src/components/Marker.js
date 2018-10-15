@@ -67,7 +67,7 @@ class Marker extends Component {
     addDragEndListener(id);
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     const {id, removeDragEndListener} = this.props;
     removeDragEndListener(id);
   }
