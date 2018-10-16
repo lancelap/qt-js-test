@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.94dc060f.chunk.css",
-  "main.js": "/static/js/main.dd60d346.chunk.js",
-  "main.js.map": "/static/js/main.dd60d346.chunk.js.map",
-  "static/js/1.26595268.chunk.js": "/static/js/1.26595268.chunk.js",
-  "static/js/1.26595268.chunk.js.map": "/static/js/1.26595268.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/css/main.94dc060f.chunk.css.map": "/static/css/main.94dc060f.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.c504f4f0c47f06495d5c05f8ba0fe555.js": "/precache-manifest.c504f4f0c47f06495d5c05f8ba0fe555.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/qt-js-test/static/css/main.94dc060f.chunk.css",
+  "main.js": "/qt-js-test/static/js/main.dd60d346.chunk.js",
+  "main.js.map": "/qt-js-test/static/js/main.dd60d346.chunk.js.map",
+  "static/js/1.26595268.chunk.js": "/qt-js-test/static/js/1.26595268.chunk.js",
+  "static/js/1.26595268.chunk.js.map": "/qt-js-test/static/js/1.26595268.chunk.js.map",
+  "runtime~main.js": "/qt-js-test/static/js/runtime~main.b6d91d0c.js",
+  "runtime~main.js.map": "/qt-js-test/static/js/runtime~main.b6d91d0c.js.map",
+  "static/css/main.94dc060f.chunk.css.map": "/qt-js-test/static/css/main.94dc060f.chunk.css.map",
+  "index.html": "/qt-js-test/index.html",
+  "precache-manifest.a3c63f2176dc3d3de4a2963536d16c83.js": "/qt-js-test/precache-manifest.a3c63f2176dc3d3de4a2963536d16c83.js",
+  "service-worker.js": "/qt-js-test/service-worker.js"
 }
