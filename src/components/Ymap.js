@@ -4,7 +4,7 @@ import YandexMap from './YandexMap';
 import MarkerList from './MarkerList';
 import MarkerForm from './MarkerForm';
 import update from 'immutability-helper';
-
+import Loader from './Loader';
 
 class Ymap extends Component {
   constructor() {
@@ -60,7 +60,7 @@ class Ymap extends Component {
               markers={markers} />
           </div>
         ) : (
-          null
+          <Loader />
         )}
         
         <YandexMap id={mapId} />
