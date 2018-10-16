@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Marker from './Marker';
+import MarkerContainer from './MarkerContainer';
 import Polyline from './Polyline';
 import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ class MarkerList extends Component {
   render() {  
     const {deleteMarker, markers, addDragEndListener, removeDragEndListener, moveMarker, getMapY} = this.props;
     const markersArr = markers.map((marker, index) => {
-      return <Marker
+      return <MarkerContainer
         key={marker.timestamp}
         text={marker.text}
         id={marker.timestamp}
