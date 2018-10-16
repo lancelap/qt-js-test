@@ -3,18 +3,18 @@ import loadScriptMap from '../loadScriptMap';
 import YandexMap from './YandexMap';
 import MarkerList from './MarkerList';
 import MarkerForm from './MarkerForm';
+import update from 'immutability-helper';
 
 
 class Ymap extends Component {
   constructor() {
     super();
+    this.getMapY = null;
 
     this.state = {
-      map: {},
-      ymaps: {},
       loaded: false,
       mapId: 'YMapsID',
-      markers: {},
+      markers: [],
     };
   }
 
@@ -32,80 +32,80 @@ class Ymap extends Component {
       zoom: 10
     });
 
+    this.getMapY = function() {
+      return {
+        ymaps,
+        mapY
+      };
+    };
+
     this.setState({
-      map: mapY,
-      ymaps: ymaps,
       loaded: true
     });
   }
 
   render() {
-    const {mapId, map, ymaps, loaded, markers} = this.state;
+    const {mapId, loaded, markers} = this.state;
     return (
       <div className='map'>
-        <div>
-          <MarkerForm addMarker={this.addMarker} loaded={loaded} />
-
-          {loaded ? (
+        {loaded ? (
+          <div>
+            <MarkerForm addMarker={this.addMarker} getMapY={this.getMapY} />
             <MarkerList 
-              map={map} 
+              getMapY={this.getMapY} 
               deleteMarker={this.deleteMarker} 
               moveMarker={this.moveMarker}
               addDragEndListener={this.addDragEndListener}
               removeDragEndListener={this.removeDragEndListener}
-              ymaps={ymaps} 
               markers={markers} />
-          ) : (
-            null
-          )}
-        </div>
+          </div>
+        ) : (
+          null
+        )}
         
         <YandexMap id={mapId} />
       </div>
     );
   }
 
-  addMarker = (id, text) => {
-    const {map, ymaps} = this.state;
-    const coordinates = map.getCenter();
-    const placemark = new ymaps.Placemark(coordinates, {balloonContent: text}, { 
-      draggable: true 
-    });
-
-    map.geoObjects.add(placemark); 
-    const marker = {timestamp: id, text, coordinates, placemark};
-    this.setState({markers: {...this.state.markers, [id]: marker}});
-  }
-
-  deleteMarker = (id) => {
-    const newMarkers = {...this.state.markers};
-    this.state.map.geoObjects.remove(newMarkers[id].placemark);
-    delete newMarkers[id];
-
-    this.setState({markers: {...newMarkers}});
-  }
-
-  addDragEndListener = (id) => {
-    const markers = this.state.markers;
-    const marker = markers[id].placemark;
-
-    marker.events.add('dragend', () => {
-      const newMarkers = {...this.state.markers};
-      newMarkers[id].coordinates = marker.geometry.getCoordinates();
-      this.setState({markers: {...newMarkers}});
+  addMarker = (id, text, coordinates) => {
+    const marker = {timestamp: id, text, coordinates};
+    this.setState({
+      markers: [...this.state.markers, marker]
     });
   }
 
-  removeDragEndListener = (id) => {
-    const markers = this.state.markers;
-    const marker = markers[id].placemark;
-    
-    marker.events.remove('dragend');
+  deleteMarker = (index) => {
+    this.setState(
+      update(this.state, {
+        markers: {
+          $splice: [[index, 1]]
+        }
+      })
+    );
+  }
+
+  addDragEndListener = (index, placemark) => {
+    this.setState(
+      update(this.state, {
+        markers: {
+          $splice: [[index, 1, placemark]]
+        }
+      })
+    );
   }
 
   moveMarker = (dragIndex, hoverIndex) => {
+    const {markers} = this.state;
+    const dragCard = markers[dragIndex];
 
-    console.log(dragIndex, hoverIndex);
+    this.setState(
+      update(this.state, {
+        markers: {
+          $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]],
+        },
+      }),
+    );
   }
 
 }

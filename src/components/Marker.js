@@ -63,19 +63,35 @@ const cardTarget = {
 
 class Marker extends Component {
   componentDidMount() {
-    const {id, addDragEndListener} = this.props;
-    addDragEndListener(id);
+    const {addDragEndListener, text, id, getMapY} = this.props;
+    const {ymaps, mapY} = getMapY();
+    const coordinates = mapY.getCenter();
+
+    const placemark = new ymaps.Placemark(coordinates, {
+      balloonContent: this.props.text
+    }, { 
+      draggable: true 
+    });
+
+    this.placemark = placemark;
+    
+    mapY.geoObjects.add(placemark); 
+
+    placemark.events.add('dragend', () => {
+      const coordinates = placemark.geometry.getCoordinates();
+      addDragEndListener(this.props.index, {timestamp: id, text, coordinates});
+    });
   }
 
   componentWillUnmount() {
-    const {id, removeDragEndListener} = this.props;
-    removeDragEndListener(id);
+    this.placemark.events.remove('dragend');
+    this.props.getMapY().mapY.geoObjects.remove(this.placemark);
   }
 
   render() {
     const {
       text, 
-      id, 
+      index, 
       deleteMarker,
       isDragging,
       connectDragSource,
@@ -89,16 +105,16 @@ class Marker extends Component {
         connectDropTarget(
           <li className='marker' style={{opacity}}>
             <p className='marker__text'>{text}</p>
-            <button className='marker__button' onClick={this.clickHandeler(id, deleteMarker)}>X</button>
+            <button className='marker__button' onClick={this.clickHandeler(index, deleteMarker)}>X</button>
           </li>
         ),
       )
     );
   }
 
-  clickHandeler = (id, deleteMarker) => (e) => {
+  clickHandeler = (index, deleteMarker) => (e) => {
     e.preventDefault();
-    deleteMarker(id);
+    deleteMarker(index);
   }
 }
 
@@ -106,7 +122,7 @@ Marker.propTypes = {
   id: PropTypes.number,
   deleteMarker: PropTypes.func, 
   addDragEndListener: PropTypes.func, 
-  removeDragEndListener: PropTypes.func, 
+  getMapY: PropTypes.func
 };
 
 export default flow(

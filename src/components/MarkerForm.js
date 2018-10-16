@@ -15,7 +15,6 @@ class MarkerForm extends Component {
         <input className='marker-form__input'
           type="text"
           value={this.state.text}
-          disabled={!this.props.loaded}
           placeholder="Новая точка маршрута" 
           onChange={this.onChangeMarkerTitle} />
       </form>
@@ -30,14 +29,15 @@ class MarkerForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.addMarker(Date.now(), this.state.text);
+    const mapY = this.props.getMapY().mapY;
+    this.props.addMarker(Date.now(), this.state.text, mapY.getCenter());
     this.setState({text: ''});
   }
 }
 
 MarkerForm.propTypes = {
-  loaded: PropTypes.bool, 
   addMarker: PropTypes.func, 
+  getMapY: PropTypes.func
 };
 
 export default MarkerForm;
