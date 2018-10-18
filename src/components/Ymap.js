@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import loadScriptMap from '../loadScriptMap';
-import YandexMap from './YandexMap';
 import MarkerList from './MarkerList';
 import MarkerForm from './MarkerForm';
 import update from 'immutability-helper';
@@ -9,50 +7,22 @@ import Loader from './Loader';
 class Ymap extends Component {
   constructor() {
     super();
-    this.getMapY = null;
 
     this.state = {
-      loaded: false,
-      mapId: 'YMapsID',
       markers: [],
     };
   }
 
-  componentDidMount() {
-    loadScriptMap('https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=initYandexMap')
-      .then((ymaps) => {
-        this.initMap(ymaps);
-      })
-      .catch(error => console.error(error));
-  }
-
-  initMap(ymaps) {
-    const mapY = new ymaps.Map(this.state.mapId, {
-      center: [55.87, 37.66],
-      zoom: 10
-    });
-
-    this.getMapY = function() {
-      return {
-        ymaps,
-        mapY
-      };
-    };
-
-    this.setState({
-      loaded: true
-    });
-  }
-
   render() {
-    const {mapId, loaded, markers} = this.state;
+    const {loaded, getMapY} = this.props;
+    const {markers} = this.state;
     return (
-      <div className='map'>
+      <div>
         {loaded ? (
           <div>
-            <MarkerForm addMarker={this.addMarker} getMapY={this.getMapY} />
+            <MarkerForm addMarker={this.addMarker} getMapY={getMapY} />
             <MarkerList 
-              getMapY={this.getMapY} 
+              getMapY={getMapY} 
               deleteMarker={this.deleteMarker} 
               moveMarker={this.moveMarker}
               addDragEndListener={this.addDragEndListener}
@@ -62,8 +32,6 @@ class Ymap extends Component {
         ) : (
           <Loader />
         )}
-        
-        <YandexMap id={mapId} />
       </div>
     );
   }
