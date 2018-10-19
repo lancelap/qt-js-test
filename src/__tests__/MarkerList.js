@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import MarkerList from '../components/MarkerList';
 
 it('should render list', () => {
@@ -37,6 +37,6 @@ it('should render list', () => {
     };
   };
 
-  const container = mount(<MarkerList markers={markers} getMapY={getMapY} />);
+  const container = shallow(<MarkerList markers={markers} getMapY={getMapY} />);
   expect(container.find('ul').children()).toHaveLength(markers.length);
 });

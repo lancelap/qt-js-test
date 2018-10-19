@@ -87,11 +87,7 @@ class MarkerList extends Component {
 }
 
 MarkerList.propTypes = {
-  getMapY: PropTypes.func, 
-  deleteMarker: PropTypes.func, 
-  markers: PropTypes.array, 
-  addDragEndListener: PropTypes.func, 
-  removeDragEndListener: PropTypes.func, 
+  getMapY: PropTypes.func.isRequired
 };
 
 export default MarkerList;

@@ -36,8 +36,8 @@ class MarkerForm extends Component {
 }
 
 MarkerForm.propTypes = {
-  addMarker: PropTypes.func, 
-  getMapY: PropTypes.func
+  addMarker: PropTypes.func.isRequired, 
+  getMapY: PropTypes.func.isRequired
 };
 
 export default MarkerForm;

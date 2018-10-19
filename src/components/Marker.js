@@ -105,8 +105,10 @@ export default flow(
 )(Marker);
 
 Marker.propTypes = {
-  id: PropTypes.number,
-  deleteMarker: PropTypes.func, 
-  addDragEndListener: PropTypes.func, 
-  getMapY: PropTypes.func
+  id: PropTypes.number.isRequired,
+  deleteMarker: PropTypes.func.isRequired, 
+  addDragEndListener: PropTypes.func.isRequired, 
+  getMapY: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired
 };

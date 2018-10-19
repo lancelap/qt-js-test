@@ -26,8 +26,8 @@ class Polyline extends Component {
 }
 
 Polyline.propTypes = {
-  markers: PropTypes.array,
-  getMapY: PropTypes.func
+  markers: PropTypes.array.isRequired,
+  getMapY: PropTypes.func.isRequired
 };
 
 export default Polyline;

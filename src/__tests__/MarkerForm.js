@@ -25,4 +25,5 @@ it('should submit', () => {
   container.setState({text: 'test'});
   container.find('form').simulate('submit');
   expect(container.find('.marker-form__input').props().value).toEqual('');
+  container.unmount();
 });
