@@ -35,9 +35,9 @@ code {
 
 .marker {
   display: flex;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: 1px solid #ffffff;
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid royalblue;
   background-color: #ffffff;
   list-style-type: none;
 }
