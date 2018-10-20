@@ -27,7 +27,6 @@ class MarkerList extends Component {
         index={index}
         moveMarker={this.moveMarker}
         addDragEndListener={this.addDragEndListener} 
-        removeDragEndListener={this.removeDragEndListener}
         getMapY={getMapY} />;
     });
     const coords = markers.map((marker) => {
