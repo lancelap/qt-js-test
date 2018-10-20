@@ -21,22 +21,38 @@ it('should render list', () => {
     }
   ];
   
-  function getMapY () {
-    return {
-      mapY: {
-        getCenter: function() {
-          return ([0, 0]);
-        },
-        geoObjects: {
-          add: jest.fn()
-        }
-      },
-      ymaps: {
-        Polyline: jest.fn()
+  const mapY = {
+    getCenter: function() {
+      return ([0, 0]);
+    },
+    geoObjects: {
+      add: jest.fn,
+      remove: jest.fn
+    }
+  };
+  
+  const ymaps = {
+    Polyline: class {
+      constructor() {
+        this.geometry = {
+          setCoordinates: jest.fn
+        };
       }
-    };
+    },
+    Placemark: class {
+      constructor(geometry, properties, options) {
+        this.geometry = geometry;
+        this.properties = properties;
+        this.options = options;
+        this.events = {
+          add: jest.fn,
+          remove: jest.fn
+        };
+      }
+    }
   };
 
-  const container = shallow(<MarkerList markers={markers} getMapY={getMapY} />);
+  const container = shallow(<MarkerList mapY={mapY} ymaps={ymaps} />);
+  container.setState({markers});
   expect(container.find('ul').children()).toHaveLength(markers.length);
 });

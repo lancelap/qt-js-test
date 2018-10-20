@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import YandexMap from '../components/YandexMap';
 
 it('should render map', () => {
-  const id = 3;
+  const id = 'YandexMap';
   const container = shallow(<YandexMap id={id}  />);
   expect(container.contains(
     <div 
@@ -13,3 +13,11 @@ it('should render map', () => {
     </div>
   )).toEqual(true);
 });
+
+it('should Component Update is false', () => {
+  const id = 'YandexMap';
+  const container = shallow(<YandexMap id={id} />);
+  const shouldUpdate = container.instance().shouldComponentUpdate();
+  expect(shouldUpdate).toBe(false);
+});
+
