@@ -7,10 +7,11 @@ import YandexMap from './YandexMap';
 class Ymap extends Component {
   constructor() {
     super();
-    this.getMapY = null;
     this.state = {
       loaded: false,
-      mapId: 'YMapsID'
+      mapId: 'YMapsID',
+      mapY: null,
+      ymaps: null
     };
   }
 
@@ -23,11 +24,11 @@ class Ymap extends Component {
   }
 
   render() {
-    const {loaded, mapId} = this.state;
+    const {loaded, mapId, ymaps, mapY} = this.state;
     return (      
       <div className='map'>
         {loaded ? (
-          <MarkerList getMapY={this.getMapY} />
+          <MarkerList ymaps={ymaps} mapY={mapY}/>
         ) : (
           <Loader />
         )}
@@ -41,15 +42,10 @@ class Ymap extends Component {
       zoom: 10
     });
 
-    this.getMapY = function() {
-      return {
-        ymaps,
-        mapY
-      };
-    };
-
     this.setState({
-      loaded: true
+      loaded: true,
+      mapY: mapY,
+      ymaps: ymaps
     });
   }
 }

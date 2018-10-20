@@ -9,8 +9,7 @@ class Polyline extends Component {
   }
 
   componentDidMount() {
-    const {markers, getMapY} = this.props;
-    const {ymaps, mapY} = getMapY();
+    const {markers, ymaps, mapY} = this.props;
     this.polyline = new ymaps.Polyline(markers);
     mapY.geoObjects.add(this.polyline);
   }
@@ -27,7 +26,8 @@ class Polyline extends Component {
 
 Polyline.propTypes = {
   markers: PropTypes.array.isRequired,
-  getMapY: PropTypes.func.isRequired
+  mapY: PropTypes.object.isRequired,
+  ymaps: PropTypes.object.isRequired
 };
 
 export default Polyline;

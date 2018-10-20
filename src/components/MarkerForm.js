@@ -29,15 +29,14 @@ class MarkerForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const mapY = this.props.getMapY().mapY;
-    this.props.addMarker(Date.now(), this.state.text, mapY.getCenter());
+    this.props.addMarker(Date.now(), this.state.text, this.props.mapY.getCenter());
     this.setState({text: ''});
   }
 }
 
 MarkerForm.propTypes = {
   addMarker: PropTypes.func.isRequired, 
-  getMapY: PropTypes.func.isRequired
+  mapY: PropTypes.object.isRequired
 };
 
 export default MarkerForm;

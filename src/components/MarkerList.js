@@ -16,7 +16,7 @@ class MarkerList extends Component {
   
   render() {  
     const {markers} = this.state;
-    const {getMapY} = this.props;
+    const {mapY, ymaps} = this.props;
 
     const markersArr = markers.map((marker, index) => {
       return <Marker
@@ -27,7 +27,8 @@ class MarkerList extends Component {
         index={index}
         moveMarker={this.moveMarker}
         addDragEndListener={this.addDragEndListener} 
-        getMapY={getMapY} />;
+        ymaps={ymaps} 
+        mapY={mapY} />;
     });
     const coords = markers.map((marker) => {
       return marker.coordinates;
@@ -35,11 +36,18 @@ class MarkerList extends Component {
 
     return (
       <div>
-        <MarkerForm addMarker={this.addMarker} getMapY={getMapY} />
+        <MarkerForm 
+          addMarker={this.addMarker} 
+          mapY={mapY} />
+
         <ul className='marker-list'>
           {markersArr}
         </ul>
-        <Polyline markers={coords} getMapY={getMapY} />
+
+        <Polyline 
+          markers={coords} 
+          ymaps={ymaps} 
+          mapY={mapY} />
       </div>
     );
   }
@@ -86,7 +94,8 @@ class MarkerList extends Component {
 }
 
 MarkerList.propTypes = {
-  getMapY: PropTypes.func.isRequired
+  mapY: PropTypes.object.isRequired,
+  ymaps: PropTypes.object.isRequired
 };
 
 export default MarkerList;

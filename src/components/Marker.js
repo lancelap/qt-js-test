@@ -35,8 +35,7 @@ const cardTarget = {
 
 class Marker extends Component {
   componentDidMount() {
-    const {addDragEndListener, text, id, getMapY} = this.props;
-    const {ymaps, mapY} = getMapY();
+    const {addDragEndListener, text, id, mapY, ymaps} = this.props;
     const coordinates = mapY.getCenter();
 
     const placemark = new ymaps.Placemark(coordinates, {
@@ -57,7 +56,7 @@ class Marker extends Component {
 
   componentWillUnmount() {
     this.placemark.events.remove('dragend');
-    this.props.getMapY().mapY.geoObjects.remove(this.placemark);
+    this.props.mapY.geoObjects.remove(this.placemark);
   }
 
   render() {
@@ -108,7 +107,6 @@ Marker.propTypes = {
   id: PropTypes.number.isRequired,
   deleteMarker: PropTypes.func.isRequired, 
   addDragEndListener: PropTypes.func.isRequired, 
-  getMapY: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 };
