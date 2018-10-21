@@ -17,9 +17,12 @@ class MarkerList extends Component {
   render() {  
     const {markers} = this.state;
     const {mapY, ymaps} = this.props;
+    let markersArr = [];
+    let coords = [];
 
-    const markersArr = markers.map((marker, index) => {
-      return <Marker
+    markers.forEach((marker, index) => {
+      coords.push(marker.coordinates);
+      markersArr.push(<Marker
         key={marker.timestamp}
         text={marker.text}
         id={marker.timestamp}
@@ -28,10 +31,7 @@ class MarkerList extends Component {
         moveMarker={this.moveMarker}
         addDragEndListener={this.addDragEndListener} 
         ymaps={ymaps} 
-        mapY={mapY} />;
-    });
-    const coords = markers.map((marker) => {
-      return marker.coordinates;
+        mapY={mapY} />);
     });
 
     return (
