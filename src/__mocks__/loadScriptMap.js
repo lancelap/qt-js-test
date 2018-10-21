@@ -1,23 +1,26 @@
 const mock = function loadScriptMap(url) {
   const mockedCallback = () => Promise.resolve({
     Map: class {
-      Polyline = class {
-        constructor() {
-          this.geometry = {
-            setCoordinates: jest.fn
-          };
-        }
-      }
-      Placemark = class {
-        constructor(geometry, properties, options) {
-          this.geometry = geometry;
-          this.properties = properties;
-          this.options = options;
-          this.events = {
-            add: jest.fn,
-            remove: jest.fn
-          };
-        }
+      constructor() {
+        this.Polyline = class {
+          constructor() {
+            this.geometry = {
+              setCoordinates: jest.fn
+            };
+          }
+        };
+
+        this.Placemark = class {
+          constructor(geometry, properties, options) {
+            this.geometry = geometry;
+            this.properties = properties;
+            this.options = options;
+            this.events = {
+              add: jest.fn,
+              remove: jest.fn
+            };
+          }
+        };
       }
     }
   });
